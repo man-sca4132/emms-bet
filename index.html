@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EMMSBET — Sportsbook</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<div id="toast"></div>
+
+<header class="topbar">
+  <div class="brand"><span class="brand-mark">E</span><span>EMMS<span>BET</span></span></div>
+  <button class="menu-btn" onclick="toggleMenu()">☰</button>
+  <nav id="nav">
+    <button class="nav-active" onclick="showPage('home')">Sports</button>
+    <button onclick="showPage('live')">🔴 Live</button>
+    <button onclick="showPage('bets')">My Bets</button>
+    <button onclick="showPage('promos')">Promos</button>
+  </nav>
+  <div class="top-actions">
+    <button class="wallet" onclick="showPage('wallet')">KSh <b id="balance">0.00</b></button>
+    <button class="login" onclick="openModal('login')">Login</button>
+    <button class="signup" onclick="openModal('signup')">Sign Up</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div>
+    <p class="eyebrow">EMMSBET SPORTSBOOK</p>
+    <h1>Bet on the moments<br><span>that matter.</span></h1>
+    <p>Football, basketball, tennis and more. Pick your markets and build your bet slip.</p>
+    <button class="hero-btn" onclick="document.getElementById('matches').scrollIntoView({behavior:'smooth'})">Explore matches →</button>
+  </div>
+  <div class="hero-card">
+    <div class="hero-card-top"><b>⚡ LIVE NOW</b><span>Football</span></div>
+    <h3>Featured Match</h3>
+    <div class="teams"><strong>Arsenal</strong><span>VS</span><strong>Chelsea</strong></div>
+    <div class="featured-odds"><button onclick="addBet('Arsenal','1.72')">1 <b>1.72</b></button><button onclick="addBet('Draw','3.80')">X <b>3.80</b></button><button onclick="addBet('Chelsea','4.60')">2 <b>4.60</b></button></div>
+  </div>
+</section>
+
+<div class="app-layout">
+  <aside class="sidebar">
+    <h4>SPORTS</h4>
+    <button class="sport active">⚽ Football <span>124</span></button>
+    <button class="sport">🏀 Basketball <span>36</span></button>
+    <button class="sport">🎾 Tennis <span>28</span></button>
+    <button class="sport">🏎️ Formula 1 <span>8</span></button>
+    <button class="sport">🏐 Volleyball <span>19</span></button>
+    <button class="sport">🥊 Boxing <span>7</span></button>
+    <hr>
+    <h4>QUICK LINKS</h4>
+    <button class="side-link" onclick="showPage('live')">🔴 Live betting</button>
+    <button class="side-link" onclick="showPage('promos')">🎁 Promotions</button>
+    <button class="side-link" onclick="showPage('wallet')">💳 Deposit / Withdraw</button>
+    <button class="side-link" onclick="showPage('support')">💬 Customer care</button>
+  </aside>
+
+  <main id="main">
+    <div class="mobile-tabs">
+      <button class="active">Top</button><button>Football</button><button>Basketball</button><button>Tennis</button>
+    </div>
+    <section id="matches">
+      <div class="section-head"><div><h2>Top Matches</h2><p>Today's popular fixtures</p></div><button class="outline" onclick="loadFixtures()">Refresh</button></div>
+      <div id="fixture-list"></div>
+    </section>
+    <section class="features">
+      <div><b>⚡ Fast markets</b><span>Browse popular odds quickly.</span></div>
+      <div><b>🔐 Secure account</b><span>Your demo wallet is protected.</span></div>
+      <div><b>📱 Mobile ready</b><span>Designed for phones first.</span></div>
+    </section>
+  </main>
+
+  <aside class="betslip">
+    <div class="betslip-head"><h3>Bet Slip</h3><span id="bet-count">0</span></div>
+    <div class="slip-tabs"><button class="active">Single</button><button>Multiple</button></div>
+    <div id="slip-items"><div class="empty-slip"><div>🎟️</div><b>Your bet slip is empty</b><span>Tap an odd to add your selection.</span></div></div>
+    <div class="slip-footer">
+      <label>Stake (KSh)<input id="stake" type="number" min="1" placeholder="100"></label>
+      <div class="calc"><span>Total odds</span><b id="total-odds">0.00</b></div>
+      <div class="calc"><span>Potential return</span><b id="return">0.00</b></div>
+      <button class="place" onclick="placeBet()">Place demo bet</button>
+      <small>Demo mode — no real money is processed.</small>
+    </div>
+  </aside>
+</div>
+
+<footer>
+  <div class="brand footer-brand"><span class="brand-mark">E</span><span>EMMSBET</span></div>
+  <p>© 2026 EMMSBET. Demo sportsbook platform.</p>
+  <div><button onclick="showPage('support')">Help</button><button onclick="showPage('wallet')">Wallet</button><button onclick="showPage('promos')">Promotions</button></div>
+</footer>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeModal()">×</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+<script src="/app.js"></script>
+</body>
+</html>
